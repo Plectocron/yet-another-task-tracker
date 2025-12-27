@@ -1,6 +1,3 @@
-import { Link } from "react-router-dom";
-import Button from "../common/Button.jsx";
-
 /**
  * @param {string} className - Custom styling that isn't accounted for (e.g, animations)
  * @param {string} height - A class that defines the height (e.g., h-20)
