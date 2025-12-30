@@ -1,10 +1,10 @@
 import MainLayout from "../components/layouts/MainLayout.jsx";
+import Header from "../components/layouts/Header.jsx";
 
 function About() {
-
   return (
   <MainLayout>
-    <div>About Page</div>;
+    <Header />
   </MainLayout>
   );
 }
