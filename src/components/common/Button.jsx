@@ -9,8 +9,18 @@ import { Link } from "react-router-dom";
  * @param {string} textColor - Choose a valid tailwind text color class (e.g., text-white) 
  * @param {string} borderColor - Choose a valid tailwind border color class (e.g., border-black)
  * @param {string} borderThickness - Choose a valid tailwind border-size class (e.g., border-2)
+ * @param {boolean} bordered - Decides whether or not to show the borders at all (e.g., true)
  */
-function Button ({children, className="",size="md", bgColor="bg-white", textColor="text-white", borderColor="border-black", borderThickness="border-2"}) {
+function Button ({
+  children, 
+  className="",
+  size="md", 
+  bgColor="bg-white", 
+  textColor="text-white", 
+  borderColor="border-black", 
+  borderThickness="border-2",
+  bordered=true
+}) {
   const sizeClasses = {
     sm: "px-4 py-1 rounded-sm",
     md: "px-6 py-2 rounded-md",
@@ -20,7 +30,13 @@ function Button ({children, className="",size="md", bgColor="bg-white", textColo
   }
 
   return (
-    <button className={`${bgColor} ${sizeClasses[size]} ${textColor} ${borderColor} ${borderThickness} ${className}`}>
+    <button className={`
+      ${bgColor} 
+      ${sizeClasses[size]} 
+      ${textColor} 
+      ${bordered ? `${borderColor} ${borderThickness}` : ""} 
+      ${className}
+    `}>
       {children}
     </button>
   );

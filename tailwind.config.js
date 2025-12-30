@@ -12,6 +12,9 @@ export default {
         'charcoal': '#23232F',
         'gunmetal': '#2C2C38',
         'purple-muted': '#645FC6',
+      },
+      fontFamily: {
+        nunito: ["Nunito", "sans-serif"]
       }
     },
   },
