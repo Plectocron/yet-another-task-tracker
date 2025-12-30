@@ -1,11 +1,13 @@
 /**
- * @param {boolean} sideBarOpen - A state boolean
- * @param {string} sideBarWidth - Size of the sidebar. Used to know the margin and width of the main layout.
+ * @param {string} className - Custom styling that isn't accounted for (e.g, animations)
+ * @param {boolean} sidePanelOpen - A state boolean
+ * @param {string} sidePanelWidth - Size of the side panel. Used to know the margin and width of the main layout
  */
 function MainLayout({
-  sideBarOpen = false,
-  sideBarWidth = "w-64",
-  children
+  sidePanelOpen = false,
+  sidePanelWidth = "w-64",
+  children,
+  className=""
 }) {
 
   const widthMap = {
@@ -14,15 +16,17 @@ function MainLayout({
     "w-96": {margin: "ml-96", width: "w-[calc(100%-24rem)]"}
   };
 
-  const { margin, width } = sideBarOpen
-    ? widthMap[sideBarWidth]
+  const { margin, width } = sidePanelOpen
+    ? widthMap[sidePanelWidth]
     : { margin: "ml-0", width: "w-full" };
 
   return (
     <div className={`
+      relative
       ${margin}
       ${width}
       transition-all duration-300
+      ${className}
     `}>
       {children}
     </div>

@@ -9,13 +9,13 @@
  */
 function Header({
   children,
-  className="",
   height="h-20",
   bgClass="bg-black",
   textColor="text-white",
   borderThickness="border-2",
   borderColor="border-white",
-  bordered=true
+  bordered=true,
+  className=""
 }) {
   return (
     <div className={`

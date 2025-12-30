@@ -13,13 +13,15 @@ import { Link } from "react-router-dom";
  */
 function Button ({
   children, 
-  className="",
   size="md", 
   bgColor="bg-white", 
   textColor="text-white", 
   borderColor="border-black", 
   borderThickness="border-2",
-  bordered=true
+  bordered=true,
+  className="",
+  onClick, // forwarded click handler
+  type = "button",
 }) {
   const sizeClasses = {
     sm: "px-4 py-1 rounded-sm",
@@ -30,13 +32,17 @@ function Button ({
   }
 
   return (
-    <button className={`
-      ${bgColor} 
-      ${sizeClasses[size]} 
-      ${textColor} 
-      ${bordered ? `${borderColor} ${borderThickness}` : ""} 
-      ${className}
-    `}>
+    <button
+      type={type}
+      onClick={onClick}
+      className={`
+        ${bgColor} 
+        ${sizeClasses[size]} 
+        ${textColor} 
+        ${bordered ? `${borderColor} ${borderThickness}` : ""} 
+        ${className}
+      `}
+    >
       {children}
     </button>
   );

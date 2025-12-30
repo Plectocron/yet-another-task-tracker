@@ -7,11 +7,19 @@ import { Link } from "react-router-dom";
 
 function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
+  const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
   return (
-    <div className="relative">
-      <SidePanel></SidePanel>
-      <MainLayout>
+    <div className="relative flex flex-row">
+      <SidePanel
+        isOpen={sidePanelOpen}
+      >
+
+      </SidePanel>
+      <MainLayout
+        sidePanelOpen={sidePanelOpen}
+      >
+        <Button onClick={() => setSidePanelOpen(true)}></Button>
         <Header bgClass="bg-slate-dark" bordered={false}>
           <h1 className="text-4xl font-bold">
             SnapAndDo

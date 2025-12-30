@@ -13,8 +13,6 @@
  */
 function Card({
   children, 
-  classNameCard="",
-  classNameChildren="",
   flex="flex flex-col justify-evenly items-center",
   maxWidth="max-w-4xl", 
   minHeight="min-h-[300px]", 
@@ -23,7 +21,9 @@ function Card({
   borderColor="border-black", 
   borderThickness="border-2", 
   borderRadius="rounded-lg",
-  orbs
+  orbs,
+  classNameCard="",
+  classNameChildren=""
   }) {
 
   return (

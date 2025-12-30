@@ -11,13 +11,13 @@
  */
 function CircularButton({
   children, 
-  className, 
   size="circ-md", 
   bgClass="bg-white", 
   textColor="text-white", 
   borderColor="border-black", 
   borderThickness,
-  onClick
+  onClick,
+  className=""
   }) {
 
   const sizeClasses = {
