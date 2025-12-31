@@ -23,6 +23,7 @@ function MainLayout({
   return (
     <div className={`
       relative
+      min-h-screen
       ${margin}
       ${width}
       transition-all duration-300

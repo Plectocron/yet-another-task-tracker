@@ -9,17 +9,26 @@ function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
+  const sidePanelWidth = "w-64"
+
   return (
     <div className="relative flex flex-row">
       <SidePanel
         isOpen={sidePanelOpen}
+        width={sidePanelWidth}
       >
 
       </SidePanel>
       <MainLayout
         sidePanelOpen={sidePanelOpen}
+        sidePanelWidth={sidePanelWidth}
       >
-        <Button onClick={() => setSidePanelOpen(true)}></Button>
+        <img 
+          onClick={() => setSidePanelOpen(!sidePanelOpen)}
+          src=
+          {sidePanelOpen ? "/assets/menu/arrows/light-gray-right-arrow-no-tail.svg" : "/assets/menu/arrows/light-gray-left-arrow-no-tail.svg"}
+          className="size-16 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
+        />
         <Header bgClass="bg-slate-dark" bordered={false}>
           <h1 className="text-4xl font-bold">
             SnapAndDo
