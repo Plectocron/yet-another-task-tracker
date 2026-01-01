@@ -37,9 +37,11 @@ function Home() {
           className="size-12 absolute left-0 -translate-y-1/2 top-[50vh] cursor-pointer"
         />
         <Header bgClass="bg-slate-dark" bordered={false}>
-          <h1 className="text-4xl font-bold">
-            SnapAndDo
-          </h1>
+          <Link to={"/"}>
+            <h1 className="text-4xl font-bold">
+              SnapAndDo
+            </h1>          
+          </Link>
           <div className="flex justify-center items-center gap-12">
             <Button
               bgColor="bg-purple-muted"
