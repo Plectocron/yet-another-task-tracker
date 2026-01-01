@@ -64,13 +64,40 @@ function Home() {
         <div className="px-12">
           <div className="flex gap-6 px-16 pt-12">
             <div className="flex-1">
-              a
+              <div className="heading flex justify-center">
+                <Circle  
+                  bgColor="bg-[#33b09b]"
+                  size="sm"
+                  bordered={false}
+                />
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                  TODO ({todo.length})
+                </h3>                
+              </div>
             </div>
             <div className="flex-1">
-              b
+              <div className="heading flex justify-center">
+                <Circle  
+                  bgColor="bg-[#654c91]"
+                  size="sm"
+                  bordered={false}
+                />
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                  DOING ({doing.length})
+                </h3>                
+              </div>
             </div>
             <div className="flex-1">
-              c
+              <div className="heading flex justify-center">
+                <Circle  
+                  bgColor="bg-[#5bb377]"
+                  size="sm"
+                  bordered={false}
+                />
+                <h3 className="text-[#606266] font-atkinson -mt-[2px] ml-6">
+                  DONE ({done.length})
+                </h3>                
+              </div>
             </div>
           </div>
         </div>
