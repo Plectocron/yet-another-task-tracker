@@ -29,7 +29,7 @@ function Home() {
       id: uuidv4(),
       title,
       description,
-      status: 'todo',
+      status: "todo",
       createdAt: new Date(),
       priority: priority
     }
@@ -38,6 +38,43 @@ function Home() {
       ...prev,
       taskObject
     ]);
+  }
+
+  function moveTask(id, newStatus) {
+    const validStatuses = ["todo", "doing", "done"];
+
+    if (!validStatuses.includes(newStatus)) {
+      console.error(`Invalid chosen status: ${newStatus}. Must be one of the following: ${validStatuses.join(", ")}`);
+      return;
+    }
+
+    const allTasks =[...todo, ...doing, ...done];
+    const targetTask = allTasks.find(obj => obj.id === id);
+
+    if (!targetTask) {
+      console.error(`Cannot find task with the following id: ${id}`);
+      return;
+    }
+
+    const updatedTask = {
+      ...targetTask,
+      status: newStatus
+    };
+
+    setTodo(prev => newStatus === "todo"
+      ? [updatedTask, ...prev.filter(task => task.id !== id)]
+      : prev.filter(task => task.id !== id)
+    );
+
+    setDoing(prev => newStatus === "doing"
+      ? [updatedTask, ...prev.filter(task => task.id !== id)]
+      : prev.filter(task => task.id !== id)
+    );
+
+    setDone(prev => newStatus === "done"
+      ? [updatedTask, ...prev.filter(task => task.id !== id)]
+      : prev.filter(task => task.id !== id)
+    );
   }
 
   const sidePanelWidth = "w-64"
