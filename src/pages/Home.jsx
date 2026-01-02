@@ -13,11 +13,15 @@ function Home() {
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
   //Task states
+
   const [todo, setTodo] = useState([]);
   const [doing, setDoing] = useState([]);
   const [done, setDone] = useState([]);
 
+  //Task functions
+
   function addTask(title, description, priority) {
+    //Validate priority
     const validPriorities = ["low", "medium", "high"];
 
     if (!validPriorities.includes(priority)) {
@@ -25,6 +29,7 @@ function Home() {
       return;
     }
 
+    //Add new task
     const taskObject = {
       id: uuidv4(),
       title,
@@ -41,6 +46,7 @@ function Home() {
   }
 
   function moveTask(id, newStatus) {
+    //validate newStatus
     const validStatuses = ["todo", "doing", "done"];
 
     if (!validStatuses.includes(newStatus)) {
@@ -48,6 +54,7 @@ function Home() {
       return;
     }
 
+    //Get task by id
     const allTasks =[...todo, ...doing, ...done];
     const targetTask = allTasks.find(obj => obj.id === id);
 
@@ -61,6 +68,7 @@ function Home() {
       status: newStatus
     };
 
+    //Update all possible states
     setTodo(prev => newStatus === "todo"
       ? [updatedTask, ...prev.filter(task => task.id !== id)]
       : prev.filter(task => task.id !== id)
@@ -75,6 +83,22 @@ function Home() {
       ? [updatedTask, ...prev.filter(task => task.id !== id)]
       : prev.filter(task => task.id !== id)
     );
+  }
+
+  function deleteTask(id) {
+    //Get task by id
+    const allTasks =[...todo, ...doing, ...done];
+    const targetTask = allTasks.find(obj => obj.id === id);
+
+    if (!targetTask) {
+      console.error(`Cannot find task with the following id: ${id}`);
+      return;
+    }
+
+    //Delete from all possible states
+    setTodo(prev => prev.filter(task => task.id !== id));
+    setDoing(prev => prev.filter(task => task.id !== id));
+    setDone(prev => prev.filter(task => task.id !== id));
   }
 
   const sidePanelWidth = "w-64"
