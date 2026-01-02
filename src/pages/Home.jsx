@@ -1,4 +1,5 @@
 import { useState } from "react";
+import {v4 as uuidv4} from "uuid";
 import Header from "../components/layouts/Header.jsx";
 import MainLayout from "../components/layouts/MainLayout.jsx";
 import SidePanel from "../components/layouts/SidePanel.jsx";
@@ -11,9 +12,33 @@ function Home() {
   const [aboutIsHovered, setAboutIsHovered] = useState(false);
   const [sidePanelOpen, setSidePanelOpen] = useState(false);
 
+  //Task states
   const [todo, setTodo] = useState([]);
   const [doing, setDoing] = useState([]);
   const [done, setDone] = useState([]);
+
+  function addTask(title, description, priority) {
+    const validPriorities = ["low", "medium", "high"];
+
+    if (!validPriorities.includes(priority)) {
+      console.error(`Invalid priority: ${priority}. Must be one of the following: ${validPriorities.join(", ")}`);
+      return;
+    }
+
+    const taskObject = {
+      id: uuidv4(),
+      title,
+      description,
+      status: 'todo',
+      createdAt: new Date(),
+      priority: priority
+    }
+
+    setTodo((prev) => [
+      ...prev,
+      taskObject
+    ]);
+  }
 
   const sidePanelWidth = "w-64"
 
@@ -77,9 +102,7 @@ function Home() {
                   TODO ({todo.length})
                 </h3>                
               </div>
-              <TaskCard>
-                test
-              </TaskCard>
+              
             </div>
             <div className="flex-1">
               <div id="column-header-2" className="flex justify-center">
