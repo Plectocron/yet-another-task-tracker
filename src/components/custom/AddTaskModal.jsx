@@ -59,6 +59,23 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
             <div className="flex justify-start items-center mt-2 gap-4">
               <Button
                 bgColor={`${
+                  priority === "none"
+                  ? "bg-purple-muted"
+                  : "bg-midnight"
+                }`}
+                bordered={false}
+                textColor={`${ 
+                  priority === "none"
+                  ? "text-white"
+                  : "text-[#98a0ab]"
+                }`}
+                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
+                onClick={() => setPriority("none")}
+              >
+                None
+              </Button>
+              <Button
+                bgColor={`${
                   priority === "low"
                   ? "bg-purple-muted"
                   : "bg-midnight"
@@ -116,6 +133,7 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               bordered={false}
               textColor="text-[#98a0ab]"
               className="hover:bg-[#c4353f] hover:text-white transition-all duration-150"
+              onClick={onClose}
             >
               Cancel
             </Button>
