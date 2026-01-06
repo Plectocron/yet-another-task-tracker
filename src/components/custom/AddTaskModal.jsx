@@ -124,6 +124,10 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
               bordered={false}
               textColor="text-white"
               className="hover:bg-[#7772db] transition-all duration-150"
+              onClick={() => {
+                AddTaskFunction(title, description, priority);
+                onClose();
+              }}
             >
               Add Task
             </Button>
