@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Modal from "../common/Modal.jsx";
 import Card from "../common/Card.jsx";
 import Button from "../common/Button.jsx";
@@ -5,6 +6,10 @@ import CircularButton from "../common/CircularButton.jsx";
 
 function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
   if (!isOpen) return null;
+
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [priority, setPriority] = useState("none");
 
   return (
     <Modal
@@ -30,36 +35,76 @@ function AddTaskModal ({ isOpen, onClose, AddTaskFunction }) {
           <h3 className="text-lg md:text-2xl text-[#d1d5db] font-bold">Add New Task</h3>
           <div id="title-section" className="flex flex-col my-8">
             <label htmlFor="title-input" className="text-sm md:text-md text-[#98a0ab] mb-2">Task Title *</label> 
-            <input id="title-input" className="bg-midnight text-white border-none rounded-lg outline-none py-2 px-4 placeholder:text-[#98a0ab]" placeholder="Enter task title..."></input>       
+            <input 
+              id="title-input" 
+              className="bg-midnight text-white border-none rounded-lg outline-none py-2 px-4  placeholder:text-[#98a0ab]" 
+              placeholder="Enter task title..."
+              value={title}
+              onChange={(e) => setTitle(e.target.value)}
+            ></input>       
           </div>
           <div id="description-section" className="flex flex-col my-8">
             <label htmlFor="description-input" className="text-sm md:text-md text-[#98a0ab] mb-2">Task Description (optional)</label> 
-            <textarea id="description-input" maxLength={300} className="bg-midnight text-white border-none rounded-lg outline-none py-2 px-4 placeholder:text-[#98a0ab]" placeholder="Enter task descripiton..."></textarea>       
+            <textarea 
+              id="description-input" 
+              maxLength={300} 
+              className="bg-midnight text-white border-none rounded-lg outline-none py-2 px-4 placeholder:text-[#98a0ab]" 
+              placeholder="Enter task descripiton..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+            ></textarea>       
           </div>
           <div className="mb-8">
             <label className="text-sm md:text-md text-[#98a0ab] mb-2">Priority</label>
             <div className="flex justify-start items-center mt-2 gap-4">
               <Button
-                bgColor="bg-midnight"
+                bgColor={`${
+                  priority === "low"
+                  ? "bg-purple-muted"
+                  : "bg-midnight"
+                }`}
                 bordered={false}
-                textColor="text-[#98a0ab]"
-                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
+                textColor={`${ 
+                  priority === "low"
+                  ? "text-white"
+                  : "text-[#98a0ab]"
+                }`}
+                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
+                onClick={() => setPriority("low")}
               >
                 Low
               </Button>
               <Button
-                bgColor="bg-midnight"
+                bgColor={`${
+                  priority === "medium"
+                  ? "bg-purple-muted"
+                  : "bg-midnight"
+                }`}
                 bordered={false}
-                textColor="text-[#98a0ab]"
-                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
+                textColor={`${ 
+                  priority === "medium"
+                  ? "text-white"
+                  : "text-[#98a0ab]"
+                }`}
+                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
+                onClick={() => setPriority("medium")}
               >
                 Medium
               </Button>
               <Button
-                bgColor="bg-midnight"
+                bgColor={`${
+                  priority === "high"
+                  ? "bg-purple-muted"
+                  : "bg-midnight"
+                }`}
                 bordered={false}
-                textColor="text-[#98a0ab]"
-                className="hover:bg-purple-muted hover:scale-105 hover:text-white transition-all duration-150"
+                textColor={`${ 
+                  priority === "high"
+                  ? "text-white"
+                  : "text-[#98a0ab]"
+                }`}
+                className="hover:bg-[#7772db] hover:scale-105 hover:text-white transition-all duration-150"
+                onClick={() => setPriority("high")}
               >
                 High
               </Button>
