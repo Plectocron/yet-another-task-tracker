@@ -206,6 +206,7 @@ function Home() {
       <AddTaskModal 
         isOpen={isAddTaskModalOpen}
         onClose={() => setIsAddTaskModalOpen(false)}
+        AddTaskFunction={addTask}
       />
     </div>
   );
